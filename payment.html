@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-KQQy-q2EIDVHs3fo"></script>
+  <title>Payment</title>
+</head>
+<body>
+  <header>
+    <img src="image/logo.png" class="login-logo">
+    <div class="language-signup">
+      <button class="signup-btn">Sign Up</button>
+    </div>
+  </header>
+
+  <div class="start-content">
+    <p class="wrapper-step">STEP 3 OF 3</p> 
+    <h1>Choose How To Pay</h1>
+  </div>
+
+  <div class="payment-container">
+    <h2>Ringkasan Pembayaran</h2>
+    <div class="payment-summary">
+      <p><strong>Plan:</strong> <span id="plan-name">-</span></p>
+      <p><strong>Harga:</strong> <span id="plan-price">-</span></p>
+    </div>
+    <button id="pay-button">Bayar Sekarang</button>
+  </div>
+
+ 
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+  const supabaseUrl = 'https://rgwfyftscvifnqlrtsik.supabase.co'; 
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJnd2Z5ZnRzY3ZpZm5xbHJ0c2lrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY1Mzc4NjYsImV4cCI6MjA2MjExMzg2Nn0.myqp9bA7BBwIJhpuIOmEqHLGeXZoeFzPvd9W5YwfBxU'; // Ganti dengan anon key kamu
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const plan = urlParams.get('plan') || "Premium Plan";
+  const price = parseInt(urlParams.get('price') || "225000");
+  const email = localStorage.getItem("user_email") || "budi@example.com";
+
+  document.getElementById("plan-name").innerText = plan;
+  document.getElementById("plan-price").innerText = `Rp ${price.toLocaleString("id-ID")}`;
+
+  async function updateUserPlan(plan, price) {
+    const { data, error } = await supabase
+      .from('users')
+      .update({ plan, price })
+      .eq('email', email);
+
+    if (error) {
+      console.error('Gagal update plan:', error);
+    } else {
+      console.log('Plan berhasil diupdate:', data);
+    }
+  }
+
+  async function updatePaymentStatus() {
+    const { data, error } = await supabase
+      .from('users')
+      .update({ isPaid: true })
+      .eq('email', email);
+
+    if (error) {
+      console.error('Gagal update status bayar:', error);
+    } else {
+      console.log('Status bayar berhasil diupdate:', data);
+    }
+  }
+
+  document.getElementById("pay-button").addEventListener("click", function () {
+    fetch("http://localhost:3000/create-snap-token", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount: price,
+        customerName: "Budi", // Ubah kalau punya nama user
+        email: email
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      window.snap.pay(data.token, {
+        onSuccess: async function(result){
+          alert("Pembayaran berhasil!");
+          console.log(result);
+          await updateUserPlan(plan, price);
+          await updatePaymentStatus();
+          window.location.href = "index.html";
+        },
+        onPending: function(result){
+          alert("Menunggu pembayaran...");
+          console.log(result);
+        },
+        onError: function(result){
+          alert("Pembayaran gagal.");
+          console.log(result);
+        },
+        onClose: function(){
+          alert('Anda menutup popup pembayaran.');
+        }
+      });
+    })
+    .catch(err => console.error("Gagal ambil snap token:", err));
+  });
+</script>
+
+  
+
+  <div class="bottom-line"></div>
+  <footer class="footer">
+    <div class="footer-top">
+      <p>Questions? Call <a href="tel:085798061625">085798061625</a></p>
+    </div>
+    <div class="footer-links">
+      <a href="#">FAQ</a>
+      <a href="#">Privacy</a>
+      <a href="#">Help Center</a>
+      <a href="#">Cookie Preferences</a>
+      <a href="#">Terms of Use</a>
+    </div>
+    <div class="footer-lang">
+      <select>
+        <option>English</option>
+        <option>Bahasa Indonesia</option>
+      </select>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+  <header>
+    <img src="image/logo.png" class="login-logo">
+    <div class="language-signup">
+      <button class="signup-btn">Sign Up</button>
+    </div>
+  </header>
+
+  <div class="register-wrapper">
+    <form>
+      <p class="wrapper-step">STEP 1 OF 3</p>
+      <h1>Create A Account To Start<br>Your Membership</h1>
+
+      <div class="input-box">
+        <input type="email" id="email" placeholder="Email" required>
+        <i class='bx bxs-envelope'></i>
+      </div>
+
+      <div class="input-box">
+        <input type="password" id="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+
+      <button type="submit" class="btn" id="next-btn">Next</button> 
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("next-btn").addEventListener("click", function(event) {
+  event.preventDefault(); // Mencegah form submit default
+  
+  // Validasi email
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  // Memeriksa apakah email dan password valid
+  if (!email || !password) {
+    alert("Email dan Password wajib diisi!");
+    return; // Hentikan proses jika form tidak valid
+  }
+
+  // Memeriksa apakah format email valid
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+    alert("Masukkan email yang valid.");
+    return; // Hentikan proses jika email tidak valid
+  }
+
+  // Jika semua validasi lulus, lanjutkan ke halaman berikutnya
+  window.location.href = "membership.html"; // Ganti dengan URL tujuan
+});
+
+  </script>
+
+<script type="module">
+  import { SupabaseService } from './SupabaseService.js';
+
+  document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const service = new SupabaseService();
+    try {
+      await service.registerUser({ email, password });
+      localStorage.setItem('userEmail', email);
+      window.location.href = 'membership.html';
+    } catch (err) {
+      alert("Gagal register: " + err.message);
+    }
+  });
+</script>
+
+  <div class="bottom-line"></div>
+  <footer class="footer">
+    <div class="footer-top">
+      <p>Questions? Call <a href="tel:085798061625">085798061625</a></p>
+    </div>
+    <div class="footer-links">
+      <a href="#">FAQ</a>
+      <a href="#">Privacy</a>
+      <a href="#">Help Center</a>
+      <a href="#">Cookie Preferences</a>
+      <a href="#">Terms of Use</a>
+    </div>
+    <div class="footer-lang">
+      <select>
+        <option>English</option>
+        <option>Bahasa Indonesia</option>
+      </select>
+    </div>
+  </footer>
+
+ <script src="register.js"></script>
+
+</body>
+</html>

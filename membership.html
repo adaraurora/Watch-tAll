@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register start</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="image/logo.png" class="login-logo">
+    </header>
+    <div class="start-content">
+      <p class="wrapper-step">STEP 2 OF 3</p>
+        <h1 class="start-title">Choose the plan that's right for you</h1>
+    <div class="start text"></div>
+    <p>
+        Join WatchItAll and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!
+    </p>
+    <!-- Container for plans -->
+    <div class="plan-container">
+      <!-- Plan Basic -->
+      <div class="plan-card" onclick="selectPlan(this, 'Basic Plan', 55000)">
+        <h2>Basic Plan</h2>
+        <div class="deskripsi-title"></div>
+        <p>
+          Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.
+        </p>
+        <p>Rp 55,000<span>/month</span></p>
+        <hr>
+        <strong>Video and sound quality</strong> 
+        <p>Good</p>
+        <div class="bottom-line"></div>
+
+        <strong>Resolution</strong>
+        <p>720p (HD)</p>
+        <div class="bottom-line"></div>
+
+        <strong>Supported devices</strong><br>
+        <p>TV, computer, mobile phone, Tablet</p>
+        <div class="bottom-line"></div>
+
+        <strong>Devices your household can watch at the same time</strong> 
+        <p>1</p>
+        <div class="bottom-line"></div>
+        <strong>Download devices</strong> 
+        <p>1</p>
+      </div>
+
+      <!-- Plan Standard -->
+      <div class="plan-card" onclick="selectPlan(this, 'Standard Plan', 125000)">
+        <h2>Standard Plan</h2>
+        <div class="deskripsi-title"></div>
+        <p>Access to a wider selection of movies and shows, including most new releases and exclusive content</p>
+        <p>Rp 125,000<span>/month</span></p>
+        <hr>
+        <strong>Video and sound quality</strong>  
+        <p>Great </p>
+        <div class="bottom-line"></div>
+        <strong>Resolution</strong>
+        <p>1080p (Full HD)</p>
+        <div class="bottom-line"></div>
+        <strong>Supported devices</strong><br>
+        <p>TV, computer, mobile phone, tablet</p>
+        <div class="bottom-line"></div>
+        <strong>Devices your household can watch at the same time:</strong> 
+        <p>2</p>
+        <div class="bottom-line"></div>
+        <strong>Download devices</strong> 
+        <p>2</p>
+      </div>
+
+      <!-- Plan Premium -->
+      <div class="plan-card" onclick="selectPlan(this, 'Premium Plan', 225000)">
+        <h2>Premium Plan</h2>
+        <div class="deskripsi-title"></div>
+        <p>Access to the widest selection of movies and shows, including all new releases and Offline Viewing</p>
+        <p>Rp 225,000<span>/month</span></p>
+        <hr>
+        <strong>Video and sound quality</strong>
+        <p>Best</p>
+        <div class="bottom-line"></div>
+        <strong>Resolution</strong>
+        <p>4K (Ultra HD) + HDR</p>
+        <div class="bottom-line"></div>
+        <strong>Spatial audio</strong>
+        <p>Included</p>
+        <div class="bottom-line"></div>
+        <strong>Supported devices</strong><br>
+        <p>TV, computer, mobile phone, tablet</p>
+        <div class="bottom-line"></div>
+        <strong>Devices your household can watch at the same time</strong> 
+        <p>4</p>
+        <div class="bottom-line"></div>
+        <strong>Download devices</strong> 
+        <p>6</p>
+      </div>
+    </div>
+
+    <div class="button-container">
+        <button class="next-button" id="next-btn">Next</button>
+    </div>      
+    </div>
+
+    <script>
+      // Variabel untuk menyimpan plan dan harga yang dipilih
+      let selectedPlan = null;
+      let selectedPrice = null;
+  
+      function selectPlan(card, planName, price) {
+        // Menghapus highlight dari plan sebelumnya
+        document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+        // Memberi tanda highlight pada plan yang dipilih
+        card.classList.add('selected');
+        
+        // Menyimpan informasi plan dan harga yang dipilih
+        selectedPlan = planName;
+        selectedPrice = price;
+      }
+  
+      document.getElementById("next-btn").addEventListener("click", function(event) {
+        event.preventDefault(); 
+        
+        // Pastikan ada plan yang dipilih sebelum melanjutkan
+        if (!selectedPlan) {
+          alert("Please select a plan first!");
+          return;
+        }
+        
+        // Arahkan ke halaman pembayaran dengan plan yang dipilih
+        const url = `payment.html?plan=${encodeURIComponent(selectedPlan)}&price=${selectedPrice}`;
+
+        window.location.href = url;
+      });
+    </script>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <p>Questions? Call <a href="tel:085798061625">085798061625</a></p>
+        </div>
+        <div class="footer-links">
+            <a href="#">FAQ</a>
+            <a href="#">Privacy</a>
+            <a href="#">Help Center</a>
+            <a href="#">Cookie Preferences</a>
+            <a href="#">Terms of Use</a>
+        </div>
+        <div class="footer-lang">
+            <select>
+                <option>English</option>
+                <option>Bahasa Indonesia</option>
+            </select>
+        </div>
+    </footer>
+    
+    
+
+</body>
+</html>

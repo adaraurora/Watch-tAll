@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Sign In</title>
+</head>
+<body class="login">
+
+  <header class="login-header">
+    <img src="image/logo.png" class="login-logo" alt="Logo">
+  </header>
+
+  <div class="login-wrapper">
+    <form action="" method="post" class="login-form">
+      <h1>Sign in</h1>
+
+      <div class="login-input-box">
+        <input type="text" required>
+        <label>Email or mobile number</label>
+        <i class='bx bxs-user'></i>
+      </div>
+
+      <div class="login-input-box">
+        <input type="password" id="password" required>
+        <label>password</label>
+        <i class='bx bx-hide toggle-password' onclick="togglePassword()"></i>
+      </div>
+      
+      <div class="login-remember-forgot">
+        <label class="login-remember">
+          <input type="checkbox"> Remember me
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="login-btn">Sign in</button>
+
+      <div class="login-register-link">
+        <p>New to WATCHITALL? <a href="signup.html">Sign up now</a></p>
+      </div>
+    </form>
+  </div>
+
+
+    <!--footer-->
+    <div class="bottom-line"></div>
+    <footer class="footer">
+      <div class="footer-top">
+        <p>Questions? Call <a href="tel:085798061625">085798061625</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="#">FAQ</a>
+        <a href="#">Privacy</a>
+        <a href="#">Help Center</a>
+        <a href="#">Cookie Preferences</a>
+        <a href="#">Terms of Use</a>
+      </div>
+      <div class="footer-lang">
+        <select>
+          <option>English</option>
+          <option>Bahasa Indonesia</option>
+        </select>
+      </div>
+    </footer>
+      
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/logo.png" alt="">
+        </div>
+        <input type="checkbox" id="nav_check" hidden>
+        <nav>
+            <div class="logo">
+                <img src="image/logo.png" alt="">
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tv-show.html">TV Show</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="release.html" class="active">Release</a></li>
+                <div class="nav-indicator"></div> <!-- Tambahan indikator -->
+            </ul>
+        </nav>
+        <div class="icon">
+            <i class='fa bx bx-search' ></i>
+            <i class='bx bx-bell'></i>
+            <i class='bx bx-user'></i>
+        </div>
+    </header>
+
+    <section class="release-header">
+        <div class="release-bg"></div>
+        <div class="r-hero-content">
+            <h1>Schedule Release All<br>Movie Around The World</h1>
+            <p>Get up to date to movie schedule release all around the worid</p>
+        </div>
+    </section>
+
+    <section class="release-section">
+        <div class="release-header">
+            <h1>UPCOMING RELEASE</h1>
+            <div class="filters">
+                <select id="regionFilter">
+                    <option value="all">🌍 Worldwide</option>
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europe</option>
+                    <option value="america">America</option>
+                </select>
+                <select id="yearFilter">
+                    <option value="all">📅 All Years</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="release-cards">
+            <!-- MAY -->
+            <div class="month-section">
+                <h2>MAY</h2>
+              
+                <!-- Repeatable row -->
+                <div class="release-row" data-region="asia" data-year="2025">
+                    <div class="date-circle">15</div>
+                    <img src="image/The-King’s-Affection.jpg" alt="Weak Hero" class="poster">
+                    <div class="info">
+                        <h3>The King’s Affection</h3>
+                        <p>A political thriller set in the Joseon era, following a young king’s journey through deceit and power struggles. This period piece is based on a popular historical web novel.</p>
+                    </div>
+                </div>
+      
+                <div class="release-row" data-region="europe" data-year="2025">
+                    <div class="date-circle">22</div>
+                    <img src="image/The-Pale-Blue Eye.jpg" alt="Weak Hero" class="poster">
+                    <div class="info">
+                        <h3>The Pale Blue Eye</h3>
+                        <p>Detective and Edgar Allan Poe team up to solve mysterious deaths at a university in 1830s England.</p>
+                    </div>
+                </div>
+      
+                <div class="release-row" data-region="america" data-year="2025">
+                    <div class="date-circle">20</div>
+                    <img src="image/KPop-Demon-Hunters.jpg" alt="Weak Hero" class="poster">
+                    <div class="info">
+                        <h3>KPop Demon Hunters</h3>
+                        <p>A group of K-pop idols fight demons while navigating their fame in this animated fantasy.</p>
+                    </div>
+                </div>
+      
+                <div class="release-row" data-region="america" data-year="2025">
+                    <div class="date-circle">23</div>
+                    <img src="image/Prom-Queen.jpg" alt="Weak Hero" class="poster">
+                    <div class="info">
+                        <h3>Fear Street: Prom Queen</h3>
+                        <p>A high school prom turns deadly in the latest Fear Street horror installment.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <!-- JUNE -->
+            <div class="month-section">
+                <h2>JUNE</h2>
+
+                <div class="release-row" data-region="asia" data-year="2025">
+                    <div class="date-circle">12</div>
+                    <img src="image/The-Last-Train.jpg" alt="Karol G" class="poster">
+                    <div class="info">
+                        <h3>The Last Train</h3>
+                        <p>Survivors on a futuristic train discover dark secrets while traveling through a dystopian world.</p>
+                    </div>
+                </div>
+                
+                <div class="release-row" data-region="europe" data-year="2025">
+                    <div class="date-circle">18</div>
+                    <img src="image/Barbarians.jpg" alt="Karol G" class="poster">
+                    <div class="info">
+                        <h3>Barbarians: The Final Conquest</h3>
+                        <p>The final clash between barbarian tribes and the Roman Empire in a thrilling war epic.</p>
+                    </div>
+                </div>
+
+                <div class="release-row" data-region="america" data-year="2025">
+                    <div class="date-circle">05</div>
+                    <img src="image/Another-Simple-Favor.jpg" alt="Karol G" class="poster">
+                    <div class="info">
+                        <h3>Another Simple Favor</h3>
+                        <p>Anna Kendrick and Blake Lively return for more mystery, wit, and twists at a chaotic wedding.</p>
+                    </div>
+                </div>
+
+                <div class="release-row" data-region="america" data-year="2025">
+                    <div class="date-circle">15</div>
+                    <img src="image/Deep-Cover.jpg" alt="Karol G" class="poster">
+                    <div class="info">
+                        <h3>Deep Cover</h3>
+                        <p>An improv teacher is accidentally thrust into London's criminal underworld in this action-packed comedy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JULY -->
+            <div class="month-section">
+                <h2>JULY</h2>
+
+                <div class="release-row" data-region="asia" data-year="2025">
+                    <div class="date-circle">10</div>
+                    <img src="image/Shangri-La.jpg" alt="Karol G" class="poster">
+                    <div class="info">
+                        <h3>The Battle of Shangri-La</h3>
+                        <p>A group of adventurers embarks on a perilous journey to uncover an ancient treasure hidden in the Himalayas.</p>
+                    </div>
+                </div>
+                
+                <div class="release-row" data-region="europe" data-year="2025">
+                    <div class="date-circle">15</div>
+                    <img src="image/The-Black-Forest.jpg" alt="Karol G" class="poster">
+                    <div class="info">
+                        <h3>The Black Forest</h3>
+                        <p>A psychological thriller set in a haunted forest, where a group of friends must face their deepest fears to survive.</p>
+                    </div>
+                </div>
+
+                <div class="release-row" data-region="america" data-year="2025">
+                    <div class="date-circle">10</div>
+                    <img src="image/Moana.jpg" alt="Karol G" class="poster">
+                    <div class="info">
+                        <h3>Moana</h3>
+                        <p>A live-action remake of the beloved animated film, featuring Catherine Lagaaia as Moana and Dwayne Johnson as Maui.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-line"></div>
+    <footer class="footer">
+        <div class="footer-top">
+            <p>Questions? Call <a href="tel:085798061625">085798061625</a></p>
+        </div>
+        <div class="footer-links">
+            <a href="#">FAQ</a>
+            <a href="#">Privacy</a>
+            <a href="#">Help Center</a>
+            <a href="#">Cookie Preferences</a>
+            <a href="#">Terms of Use</a>
+        </div>
+        <div class="footer-lang">
+        <select>
+            <option>English</option>
+            <option>Bahasa Indonesia</option>
+        </select>
+        </div>
+    </footer>
+    
+    <script src="main.js"></script>
+</body>
+</html>
+
+      
